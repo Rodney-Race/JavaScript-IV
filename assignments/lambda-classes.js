@@ -16,8 +16,7 @@ class Instructor extends Person {
     constructor(name, age, location, specialty, favLanguage, catchPhrase) {
         super(name, age, location);
         this.specialty = specialty;
-        this.favLanguage = language;
+        this.favLanguage = favLanguage;
         this.catchPhrase = catchPhrase;
     }
-    
 }

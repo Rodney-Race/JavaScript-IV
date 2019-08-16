@@ -1,35 +1,44 @@
 //Prototype Refactor
 //1. Copy and paste your code or the solution from yesterday
-  //=== GameObject ===
-  function GameObject(properties) {
-    this.createdAt = properties.createdAt;
-    this.name = properties.name;
-    this.dimensions = properties.dimensions;
+ //=== GameObject ===
+ function GameObject(attributes) {
+    this.createdAt = attributes.createdAt;
+    this.name = attributes.name;
+    this.dimensions = attributes.dimensions;
+  
+  }
   GameObject.prototype.destroy = function () {
     return `${this.name} was removed from the game.`;
    };
-  }
 
   // === CharacterStats ===
   function CharacterStats(attributes) {
     GameObject.call(this, attributes);
     this.healthPoints = attributes.healthPoints;
+    this.createdAt = attributes.createdAt;
+    this.name = attributes.name;
+    this.dimensions = attributes.dimensions;
+  }
+  CharacterStats.prototype = Object.create(GameObject.prototype);
   CharacterStats.prototype.takeDamage = function () {
     return `${this.name} took damage.`;
    };
-  }
-  CharacterStats.prototype = Object.create(GameObject.prototype);
+  
  
   // === Humanoid (Having an appearance or character resembling that of a human.) ===
   function Humanoid (attributes) {
     this.team = attributes.team;
     this.weapons = attributes.weapons;
     this.language = attributes.language;
-    Humanoid.prototype.greet = function() {
-      return `${this.name} offers a greeting in ${this.language}`;
-   };
+    this.createdAt = attributes.createdAt;
+    this.name = attributes.name;
+    this.dimensions = attributes.dimensions;
+    this.healthPoints = attributes.healthPoints;
   }
   Humanoid.prototype = Object.create(CharacterStats.prototype);
+  Humanoid.prototype.greet = function() {
+    return `${this.name} offers a greeting in ${this.language}`;
+ };
 
   const mage = new Humanoid({
     createdAt: new Date(),
@@ -91,5 +100,6 @@
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+
 
 //2. Your goal is to refactor all of this code to use ES6 Classes. The console.log() statements should still return what is expected of them.
