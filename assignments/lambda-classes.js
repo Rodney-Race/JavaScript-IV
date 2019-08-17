@@ -21,6 +21,8 @@ class Instructor extends Person {
     }
     demo() {
         return `Today we are learning about ${subject}`;
+    }
+    grade() {
         return `${student.name} recieves a perfect score on ${subject}`;
     }
 };
@@ -85,7 +87,9 @@ const Bill = new ProjectManager({
     age: 37,
     favLanguage: 'Python',
     specialty: 'redux',
-    gradClassName: `CS1`,
+    gradClassName: 'CS1',
     catchPhrase: `Don't forget the homies`,
-    favInstructor: `Sean`
+    favInstructor: 'Sean'
 });  
+
+console.log()
